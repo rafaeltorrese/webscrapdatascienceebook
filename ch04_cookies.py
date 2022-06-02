@@ -1,7 +1,7 @@
 import requests
 
 
-url = 'http://www.webscrapingfordatascience.com/cookielogin/'
+url = 'http://www.webscrapingfordatascience.com/redirlogin/'
 
 # First perform a POST request
 r = requests.post(url, data={'username': 'dummy', 'password':'1234'})
