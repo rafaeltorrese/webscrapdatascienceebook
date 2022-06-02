@@ -4,16 +4,14 @@ import requests
 url = 'http://www.webscrapingfordatascience.com/redirlogin/'
 
 # First perform a POST request
-r = requests.post(url, data={'username': 'dummy', 'password':'1234'})
+r = requests.post(url, data={'username': 'dummy', 'password':'1234'}, allow_redirects=False)
 
-# Get the cookie value, either from
-# r.header or r.cookies print(r.cookies)
+# Get the cookie value, either from r.header or r.cookies 
+print(r.cookies)
+
 my_cookies = r.cookies
 
-# r.cookies is a RequestsCookieJar object which can also be accesed like a dictionary. The following als works:
-my_cookies['PHPSESSID'] = r.cookies.get('PHPSESSID')
-
-# Now perform a GET request to the secret page usign the cookies
+# Now perform a GET request manually to the  secret page usign the cookies
 page = 'secret.php'
 r = requests.get(f'{url}{page}', cookies=my_cookies)
 
